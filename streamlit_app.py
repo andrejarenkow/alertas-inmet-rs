@@ -46,4 +46,17 @@ for aviso in dados['hoje']:
   if 'Rio Grande do Sul' in  aviso['estados']:
     lista_avisos_rs.append(aviso)
 
-lista_avisos_rs
+#Função para adicionar a CRS no aviso
+def crs_no_aviso(aviso):
+
+  lista_municipios = aviso['geocodes'].split(',')
+  valores_comecando_com_43 = [int(valor[:6]) for valor in lista_municipios if valor.startswith('43')]
+  lista_crs = sorted(municipios_crs[municipios_crs['IBGE6'].isin(valores_comecando_com_43)]['CRS'].unique())
+  aviso['crs'] = lista_crs
+
+  return aviso
+
+# Adicionando a CRS no aviso
+for aviso_rs in lista_avisos_rs:
+    crs_no_aviso(aviso_rs)
+
