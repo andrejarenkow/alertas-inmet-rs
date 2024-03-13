@@ -12,7 +12,7 @@ from streamlit_folium import st_folium, folium_static
 st.set_page_config(
     page_title="Alertas INMET - RS",
     page_icon=":warning:",
-    #layout="wide",
+    layout="wide",
     initial_sidebar_state='collapsed'
 )
 col1, col2, col3 = st.columns([1,4,1])
