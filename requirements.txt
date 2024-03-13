@@ -5,3 +5,4 @@ plotly
 streamlit
 streamlit-folium
 folium
+geojson
