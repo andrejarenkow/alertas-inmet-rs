@@ -162,6 +162,6 @@ Criado a partir do link: https://alertas2.inmet.gov.br/
         st.markdown(texto)
 
     except:
-        st.write('Clique em algum aviso para ver as informações')
+        st.write('Clique em algum polígono para obter informações sobre alertas.')
     
     
