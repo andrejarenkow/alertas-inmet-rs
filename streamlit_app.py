@@ -89,7 +89,7 @@ geojson_str = geojson.dumps(feature_collection, sort_keys=True)
 
 # Mapa
 # Criar um objeto de mapa
-mapa = folium.Map(location=[-28.510000000000, -52.8000000000], zoom_start=6)
+mapa = folium.Map(location=[-30.510000000000, -52.8000000000], zoom_start=6)
 
 # Criar popup
 popup = folium.GeoJsonPopup(fields=["descricao", 'severidade', 'data_inicio_formatado', 'data_fim_formatado', 'crs'],
