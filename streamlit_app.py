@@ -34,6 +34,9 @@ municipios_crs = pd.read_csv('https://raw.githubusercontent.com/andrejarenkow/cs
 with urllib.request.urlopen("https://raw.githubusercontent.com/andrejarenkow/geodata/main/RS_por_CRS/RS_por_CRS.json") as url:
   rs_municipios = json.loads(url.read().decode())
 
+# Seleção tempo avisos
+tempo = st.radio('Selecione o período desejado', options=['hoje', 'futuro'])
+
 # Dados INMET
 def obter_dados_api(url):
     try:
@@ -51,7 +54,7 @@ dados = obter_dados_api(url)
 lista_avisos_rs = []
 
 # procura rs na lista de estados de cada aviso
-for aviso in dados['hoje']:
+for aviso in dados[tempo]:
   if 'Rio Grande do Sul' in  aviso['estados']:
     lista_avisos_rs.append(aviso)
 
