@@ -169,7 +169,7 @@ Fonte: https://alertas2.inmet.gov.br/
         link_whatsapp = f"https://wa.me/?text={texto_codificado}"
         
         # HTML para o botão de compartilhamento do WhatsApp
-        html_button = f'<a href="{link_whatsapp}" target="_blank"><img src="https://image.flaticon.com/icons/png/512/733/733585.png" width="50" height="50"></a>'
+        html_button = f'<a href="{link_whatsapp}" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3670/3670051.png" width="50" height="50"></a>'
 
         # Exibir o botão no Streamlit
         st.markdown(html_button, unsafe_allow_html=True)
