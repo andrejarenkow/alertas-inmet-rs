@@ -23,7 +23,7 @@ col1, col2, col3 = st.columns([1,1,4])
 
 col1.image('https://github.com/andrejarenkow/csv/blob/master/logo_cevs%20(2).png?raw=true', width=100)
 col2.image('https://github.com/andrejarenkow/csv/blob/master/logo_estado%20(3)%20(1).png?raw=true', width=200)
-col3.title('Vigidesastres - alertas INMET')
+col3.title('Vigidesastres RS - Alertas INMET')
 
 # Importação dos dados
 municipios_crs = pd.read_csv('https://raw.githubusercontent.com/andrejarenkow/csv/master/Munic%C3%ADpios%20RS%20IBGE6%20Popula%C3%A7%C3%A3o%20CRS%20Regional%20-%20P%C3%A1gina1.csv')
