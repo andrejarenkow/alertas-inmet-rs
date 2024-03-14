@@ -168,8 +168,11 @@ Fonte: https://alertas2.inmet.gov.br/
         # Gerar o link para o WhatsApp
         link_whatsapp = f"https://wa.me/?text={texto_codificado}"
         
-        # Exibir o link
-        link_whatsapp
+        # HTML para o botão de compartilhamento do WhatsApp
+        html_button = f'<a href="{link_whatsapp}" target="_blank"><img src="https://image.flaticon.com/icons/png/512/733/733585.png" width="50" height="50"></a>'
+
+        # Exibir o botão no Streamlit
+        st.markdown(html_button, unsafe_allow_html=True)
 
     except:
         st.write('Clique em algum polígono para obter informações sobre alertas.')
