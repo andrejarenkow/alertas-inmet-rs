@@ -7,6 +7,10 @@ import plotly.graph_objects as go
 import requests
 import folium
 from streamlit_folium import st_folium, folium_static
+import requests
+import json
+import geojson
+from datetime import datetime
 
 # Configurações da página
 st.set_page_config(
