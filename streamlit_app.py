@@ -25,10 +25,8 @@ col1.image('https://github.com/andrejarenkow/csv/blob/master/logo_cevs%20(2).png
 col2.title('Alertas INMET - RS')
 col3.image('https://github.com/andrejarenkow/csv/blob/master/logo_estado%20(3)%20(1).png?raw=true', width=150)
 
-
 # Importação dos dados
 municipios_crs = pd.read_csv('https://raw.githubusercontent.com/andrejarenkow/csv/master/Munic%C3%ADpios%20RS%20IBGE6%20Popula%C3%A7%C3%A3o%20CRS%20Regional%20-%20P%C3%A1gina1.csv')
-
 
 # Dados INMET
 def obter_dados_api(url):
@@ -39,6 +37,7 @@ def obter_dados_api(url):
     except requests.exceptions.RequestException as e:
         print("Erro ao obter os dados da API:", e)
 
+# Link para acesso a todos os avisos ativos
 url='https://apiprevmet3.inmet.gov.br/avisos/ativos'
 dados = obter_dados_api(url)
 
@@ -50,17 +49,75 @@ for aviso in dados['hoje']:
   if 'Rio Grande do Sul' in  aviso['estados']:
     lista_avisos_rs.append(aviso)
 
+# Função para formatar a data corretamente
+def formatar_data(data_a_ser_formatada):
+
+  # Converter para objeto datetime
+  data_obj = datetime.strptime(data_a_ser_formatada, "%Y-%m-%dT%H:%M:%S.%fZ")
+
+  # Formatar para o formato desejado
+  data_formatada = data_obj.strftime("%d/%m/%Y")
+
+  return data_formatada
+
 #Função para adicionar a CRS no aviso
 def crs_no_aviso(aviso):
 
   lista_municipios = aviso['geocodes'].split(',')
   valores_comecando_com_43 = [int(valor[:6]) for valor in lista_municipios if valor.startswith('43')]
   lista_crs = sorted(municipios_crs[municipios_crs['IBGE6'].isin(valores_comecando_com_43)]['CRS'].unique())
-  aviso['crs'] = lista_crs
+  aviso['crs'] = ','.join(str(item) for item in lista_crs)
+  aviso['data_inicio_formatado'] = formatar_data(lista_avisos_rs[0]['data_inicio'])
+  aviso['data_fim_formatado'] = formatar_data(lista_avisos_rs[0]['data_fim'])
 
   return aviso
 
-# Adicionando a CRS no aviso
-for aviso_rs in lista_avisos_rs:
-    crs_no_aviso(aviso_rs)
+# Cria lista vazia para armazenar as features
+lista_features = []
 
+# Percorre a lista de avisos para criar as features
+for aviso in lista_avisos_rs:
+  crs_no_aviso(aviso)
+  feature = geojson.Feature(geometry=json.loads(aviso['poligono']), properties=aviso)
+  lista_features.append(feature)
+
+# Cria um FeatureCollection com os objetos Feature
+feature_collection = geojson.FeatureCollection(lista_features)
+
+# Converte para string JSON
+geojson_str = geojson.dumps(feature_collection, sort_keys=True)
+
+# Mapa
+# Criar um objeto de mapa
+mapa = folium.Map(location=[-29.481856994459644, -52.763236352888136], zoom_start=6)
+
+# Criar popup
+popup = folium.GeoJsonPopup(fields=["descricao", 'severidade', 'data_inicio_formatado', 'data_fim_formatado', 'crs'],
+                            aliases=['Tipo de alerta', 'Grau de severidade', 'Data de início', 'Data de fim', 'CRS afetadas'],
+                            style="""
+                                      background-color: #F0EFEF;
+                                      border: 2px solid black;
+                                      border-radius: 3px;
+                                      box-shadow: 3px;
+                                  """
+                            )
+
+# Adicionar o GeoJSON ao mapa
+folium.GeoJson(geojson_str,
+               style_function=lambda feature: {
+                "fillColor": feature["properties"]["aviso_cor"],
+                "color": "black",
+                "weight": 1,
+               'fillOpacity':0.4},
+               highlight_function=lambda feature: {
+                "fillColor": feature["properties"]["aviso_cor"],
+                "color": "black",
+                "weight": 3,
+               'fillOpacity':0.6
+                },
+               popup=popup
+                 ).add_to(mapa)
+
+
+# Exibindo o Mapa
+st_data = st_folium(mapa, width=725)
