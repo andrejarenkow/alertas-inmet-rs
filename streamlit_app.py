@@ -124,4 +124,4 @@ with coluna_mapa:
     st_data = st_folium(mapa, width=725)
 
 with coluna_descricao:
-    st.write(st_data['last_active_drawing'])
+    st.write(st_data['last_active_drawing']['properties']['crs'])
