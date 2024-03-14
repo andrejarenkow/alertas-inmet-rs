@@ -144,16 +144,14 @@ Aviso de: {descricao}
 
 Grau de severidade: {severidade} 
 
-Início: {data_hora_inicio} 
+*Início*: {data_hora_inicio} 
 
 Fim: {data_hora_fim} 
 
-CRS afetadas: {crs}
+CRS Afetadas: {crs}
 
 Alertas disponíveis no link: https://alertas2.inmet.gov.br/46712
-
-Áreas Afetadas: 
-    
+ 
 Recomendações:  
 {instrucoes}
 
