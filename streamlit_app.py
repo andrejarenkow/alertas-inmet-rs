@@ -144,7 +144,7 @@ Aviso de: {descricao}
 
 Grau de severidade: {severidade} 
 
-*Início*: {data_hora_inicio} 
+**Início**: {data_hora_inicio} 
 
 Fim: {data_hora_fim} 
 
