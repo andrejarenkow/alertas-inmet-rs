@@ -124,4 +124,17 @@ with coluna_mapa:
     st_data = st_folium(mapa, width=725)
 
 with coluna_descricao:
-    st.write(st_data['last_active_drawing']['properties'])
+    propriedades = st_data['last_active_drawing']['properties']
+    crs = propriedades['crs']
+    data_hora_inicio = f'{propriedades['data_inicio_formatado']} - {propriedades['hora_inicio']}'
+    data_hora_fim = f'{propriedades['data_fim_formatado']} - {propriedades['hora_fim']}'
+    descricao = propriedades['descricao']
+    instrucoes = propriedades['instrucoes']
+    riscos = propriedades['riscos']
+    severidade = propriedades['severidade']
+    texto = f"""
+        {riscos}
+    """
+    st.markdown(texto)
+    
+    
