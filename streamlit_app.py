@@ -126,8 +126,8 @@ with coluna_mapa:
 with coluna_descricao:
     propriedades = st_data['last_active_drawing']['properties']
     crs = propriedades['crs']
-    data_hora_inicio = f'{propriedades['data_inicio_formatado']} - {propriedades['hora_inicio']}'
-    data_hora_fim = f'{propriedades['data_fim_formatado']} - {propriedades['hora_fim']}'
+    data_hora_inicio = f" {propriedades['data_inicio_formatado']} - {propriedades['hora_inicio']} "
+    data_hora_fim = f"{propriedades['data_fim_formatado']} - {propriedades['hora_fim']}"
     descricao = propriedades['descricao']
     instrucoes = propriedades['instrucoes']
     riscos = propriedades['riscos']
