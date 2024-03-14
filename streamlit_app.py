@@ -130,7 +130,8 @@ folium.GeoJson(geojson_str,
                 "weight": 3,
                'fillOpacity':0.6
                 },
-               popup=popup
+               popup=popup,
+               popup_keep_highlighted=True
                  ).add_to(mapa)
 
 coluna_mapa, coluna_descricao = st.columns(2)
