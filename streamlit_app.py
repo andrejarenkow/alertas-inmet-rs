@@ -150,13 +150,14 @@ INMET publica aviso alertando sobre {riscos}. O cenário possibilita a ocorrênc
 
 **CRS Afetadas:** {crs}
 
-Alertas disponíveis no link: https://alertas2.inmet.gov.br/46712
  
 **Recomendações:**  
 {instrucoes}
 
 **Encaminhamentos:** Realizado contato com o ponto focal do Estado para ciência do risco.
 Na ocorrência do evento, solicitamos maiores informações sobre os impactos e estamos à disposição para apoiar na gestão da emergência.
+
+Criado a partir do link: https://alertas2.inmet.gov.br/
         """
         st.markdown(texto)
 
