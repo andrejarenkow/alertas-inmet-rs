@@ -11,6 +11,7 @@ import requests
 import json
 import geojson
 from datetime import datetime
+import urllib.parse
 
 # Configurações da página
 st.set_page_config(
@@ -160,6 +161,15 @@ Na ocorrência do evento, solicitamos maiores informações sobre os impactos e 
 Fonte: https://alertas2.inmet.gov.br/
         """
         st.markdown(texto)
+        
+        # Codificar o texto do link
+        texto_codificado = urllib.parse.quote(texto)
+        
+        # Gerar o link para o WhatsApp
+        link_whatsapp = f"https://wa.me/?text={texto_codificado}"
+        
+        # Exibir o link
+        link_whatsapp
 
     except:
         st.write('Clique em algum polígono para obter informações sobre alertas.')
