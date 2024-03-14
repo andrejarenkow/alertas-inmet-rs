@@ -152,8 +152,8 @@ CRS afetadas: {crs}
 
 Alertas disponíveis no link: https://alertas2.inmet.gov.br/46712
 
-Áreas Afetadas: Sudoeste Rio-grandense, Sudeste Rio-grandense
-
+Áreas Afetadas: {}
+    
 Recomendações:  
 {instrucoes}
 
