@@ -12,6 +12,7 @@ import json
 import geojson
 from datetime import datetime
 import urllib.parse
+import urllib.request
 
 # Configurações da página
 st.set_page_config(
@@ -28,6 +29,10 @@ col3.title('Vigidesastres RS - Alertas INMET')
 
 # Importação dos dados
 municipios_crs = pd.read_csv('https://raw.githubusercontent.com/andrejarenkow/csv/master/Munic%C3%ADpios%20RS%20IBGE6%20Popula%C3%A7%C3%A3o%20CRS%20Regional%20-%20P%C3%A1gina1.csv')
+
+# Importação shape CRS
+with urllib.request.urlopen("https://raw.githubusercontent.com/andrejarenkow/geodata/main/RS_por_CRS/RS_por_CRS.json") as url:
+  rs_municipios = json.loads(url.read().decode())
 
 # Dados INMET
 def obter_dados_api(url):
@@ -91,6 +96,15 @@ geojson_str = geojson.dumps(feature_collection, sort_keys=True)
 # Mapa
 # Criar um objeto de mapa
 mapa = folium.Map(location=[-30.510000000000, -53.8000000000], zoom_start=6)
+
+# Adicionando as CRS
+folium.GeoJson(rs_municipios,
+               style_function=lambda feature: {
+                "fillColor": 'black',
+                "color": "grey",
+                "weight": 0.8,
+               'fillOpacity':0},
+               ).add_to(mapa)
 
 # Criar popup
 popup = folium.GeoJsonPopup(fields=["descricao", 'severidade', 'data_inicio_formatado', 'data_fim_formatado', 'crs'],
