@@ -118,6 +118,10 @@ folium.GeoJson(geojson_str,
                popup=popup
                  ).add_to(mapa)
 
+coluna_mapa, coluna_descricao = st.columns(2)
+with coluna_mapa:
+    # Exibindo o Mapa
+    st_data = st_folium(mapa, width=725)
 
-# Exibindo o Mapa
-st_data = st_folium(mapa, width=725)
+with coluna_descricao:
+    st.write(st_data)
