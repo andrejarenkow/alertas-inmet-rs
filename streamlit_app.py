@@ -164,19 +164,19 @@ Prezados(as),
              
 INMET publica aviso alertando sobre {riscos}. O cenário possibilita a ocorrência de eventos como, alagamentos, enxurradas, movimento de massa e outros desastres associados.  
              
-**Aviso de:** {descricao}
+*Aviso de:* {descricao}
             
-**Grau de severidade:** {severidade} 
+*Grau de severidade:* {severidade} 
             
-**Início:** {data_hora_inicio} 
+*Início:* {data_hora_inicio} 
             
-**Fim:** {data_hora_fim} 
+*Fim:* {data_hora_fim} 
             
-**CRS Afetadas:** {crs}
+*CRS Afetadas:* {crs}
                        
-**Recomendações:**  {instrucoes}
+*Recomendações:*  {instrucoes}
            
-**Encaminhamentos:** Realizado contato com o ponto focal do Estado para ciência do risco.
+*Encaminhamentos:* Realizado contato com o ponto focal do Estado para ciência do risco.
 Na ocorrência do evento, solicitamos maiores informações sobre os impactos e estamos à disposição para apoiar na gestão da emergência.
 
 Fonte: https://alertas2.inmet.gov.br/
