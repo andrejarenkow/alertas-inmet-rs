@@ -79,7 +79,7 @@ def crs_no_aviso(aviso):
   lista_crs = sorted(municipios_crs[municipios_crs['IBGE6'].isin(valores_comecando_com_43)]['CRS'].unique())
   aviso['crs'] = ', '.join(str(item) for item in lista_crs)
   aviso['riscos'] = '. '.join(str(item) for item in aviso['riscos'])
-  aviso['recomendacoes'] = '. '.join(str(item) for item in aviso['recomendacoes'])
+  #aviso['recomendacoes'] = '. '.join(str(item) for item in aviso['recomendacoes'])
   aviso['data_inicio_formatado'] = formatar_data(lista_avisos_rs[0]['data_inicio'])
   aviso['data_fim_formatado'] = formatar_data(lista_avisos_rs[0]['data_fim'])
   
