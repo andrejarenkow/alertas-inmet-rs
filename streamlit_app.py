@@ -154,29 +154,34 @@ with coluna_descricao:
         instrucoes = propriedades['instrucoes']
         riscos = propriedades['riscos']
         severidade = propriedades['severidade']
+        
+        # Remover as aspas e os colchetes do texto gerado pela API
+        descrição_limpa = descricao.replace("'", "").replace("[", "").replace("]", "")
+
+        
         texto = f"""
-        VIGIDESASTRES - PROGRAMA NACIONAL DE VIGILÂNCIA EM SAÚDE DOS RISCOS ASSOCIADOS AOS DESASTRES
+            VIGIDESASTRES - PROGRAMA NACIONAL DE VIGILÂNCIA EM SAÚDE DOS RISCOS ASSOCIADOS AOS DESASTRES
 
-Prezados(as), 
- 
-INMET publica aviso alertando sobre {riscos}. O cenário possibilita a ocorrência de eventos como, alagamentos, enxurradas, movimento de massa e outros desastres associados.  
- 
-**Aviso de:** {descricao}
-
-**Grau de severidade:** {severidade} 
-
-**Início:** {data_hora_inicio} 
-
-**Fim:** {data_hora_fim} 
-
-**CRS Afetadas:** {crs}
-
- 
-**Recomendações:**  
-{instrucoes}
-
-**Encaminhamentos:** Realizado contato com o ponto focal do Estado para ciência do risco.
-Na ocorrência do evento, solicitamos maiores informações sobre os impactos e estamos à disposição para apoiar na gestão da emergência.
+            Prezados(as), 
+             
+            INMET publica aviso alertando sobre {riscos}. O cenário possibilita a ocorrência de eventos como, alagamentos, enxurradas, movimento de massa e outros desastres associados.  
+             
+            **Aviso de:** {descricao}
+            
+            **Grau de severidade:** {severidade} 
+            
+            **Início:** {data_hora_inicio} 
+            
+            **Fim:** {data_hora_fim} 
+            
+            **CRS Afetadas:** {crs}
+            
+             
+            **Recomendações:**  
+            {instrucoes}
+            
+            **Encaminhamentos:** Realizado contato com o ponto focal do Estado para ciência do risco.
+            Na ocorrência do evento, solicitamos maiores informações sobre os impactos e estamos à disposição para apoiar na gestão da emergência.
 
 Fonte: https://alertas2.inmet.gov.br/
         """
@@ -184,13 +189,7 @@ Fonte: https://alertas2.inmet.gov.br/
         
         # Codificar o texto do link
         texto_codificado = urllib.parse.quote(texto)
-
-        # Remover as aspas simples
-        texto_sem_aspas = texto_codificado.replace("'", "")
-        
-        # Remover os colchetes
-        texto_sem_colchetes = texto_sem_aspas.replace("[", "").replace("]", "")
-        
+       
         # Gerar o link para o WhatsApp
         link_whatsapp = f"https://wa.me/?text={texto_codificado}"
         
