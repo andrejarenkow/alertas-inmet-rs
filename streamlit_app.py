@@ -77,18 +77,13 @@ def crs_no_aviso(aviso):
   lista_municipios = aviso['geocodes'].split(',')
   valores_comecando_com_43 = [int(valor[:6]) for valor in lista_municipios if valor.startswith('43')]
   lista_crs = sorted(municipios_crs[municipios_crs['IBGE6'].isin(valores_comecando_com_43)]['CRS'].unique())
-  aviso['crs'] = ','.join(str(item) for item in lista_crs)
+  aviso['crs'] = '. '.join(str(item) for item in lista_crs)
+  aviso['descricao'] = ','(. ).join(str(item) for item in aviso['descricao'])
   aviso['data_inicio_formatado'] = formatar_data(lista_avisos_rs[0]['data_inicio'])
   aviso['data_fim_formatado'] = formatar_data(lista_avisos_rs[0]['data_fim'])
   
   return aviso
 
-
-#formatar textos
-def formatacao_textos(formatacao)
-    aviso['descricao'] = ','.join(str(item) for item in descricao)
-
-return formatacao
 
 # Cria lista vazia para armazenar as features
 lista_features = []
