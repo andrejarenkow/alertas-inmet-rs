@@ -184,6 +184,12 @@ Fonte: https://alertas2.inmet.gov.br/
         
         # Codificar o texto do link
         texto_codificado = urllib.parse.quote(texto)
+
+        # Remover as aspas simples
+        texto_sem_aspas = texto.replace("'", "")
+        
+        # Remover os colchetes
+        texto_sem_colchetes = texto_sem_aspas.replace("[", "").replace("]", "")
         
         # Gerar o link para o WhatsApp
         link_whatsapp = f"https://wa.me/?text={texto_codificado}"
@@ -194,12 +200,7 @@ Fonte: https://alertas2.inmet.gov.br/
         # Exibir o botão no Streamlit
         st.markdown(html_button, unsafe_allow_html=True)
         
-        # Remover as aspas simples
-        texto_sem_aspas_simples = re.sub(r"'", "", texto)
         
-        # Remover colchetes e seus conteúdos
-        texto_sem_colchetes = re.sub(r'\[.*?\]', '', texto_sem_aspas_simples)
-
     except:
         st.write('Clique na área de interesse e aguarde para obter informações sobre alertas.')
     
