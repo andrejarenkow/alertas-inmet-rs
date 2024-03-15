@@ -80,10 +80,16 @@ def crs_no_aviso(aviso):
   aviso['crs'] = ','.join(str(item) for item in lista_crs)
   aviso['data_inicio_formatado'] = formatar_data(lista_avisos_rs[0]['data_inicio'])
   aviso['data_fim_formatado'] = formatar_data(lista_avisos_rs[0]['data_fim'])
-  aviso['descricao'] = ','.join(str(item) for item in descricao)
+  
   return aviso
 
-    
+
+#formatar textos
+def formatacao_textos(formatacao)
+    aviso['descricao'] = ','.join(str(item) for item in descricao)
+
+return formatacao
+
 # Cria lista vazia para armazenar as features
 lista_features = []
 
