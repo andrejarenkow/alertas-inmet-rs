@@ -80,17 +80,10 @@ def crs_no_aviso(aviso):
   aviso['crs'] = ','.join(str(item) for item in lista_crs)
   aviso['data_inicio_formatado'] = formatar_data(lista_avisos_rs[0]['data_inicio'])
   aviso['data_fim_formatado'] = formatar_data(lista_avisos_rs[0]['data_fim'])
-
+  aviso['descricao'] = ','.join(str(item) for item in descricao)
   return aviso
 
-# Função para formatar a texto
-def remover_aspas_e_colchetes(descricao):
     
-    descricao_sem_aspas = descricao.replace("'", "")  # Remove as aspas simples
-    descricao_formatada = texto_sem_aspas.replace("[", "").replace("]", "")  # Remove os colchetes
-    return descricao_formatada
-
-
 # Cria lista vazia para armazenar as features
 lista_features = []
 
