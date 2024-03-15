@@ -186,7 +186,7 @@ Fonte: https://alertas2.inmet.gov.br/
         texto_codificado = urllib.parse.quote(texto)
 
         # Remover as aspas simples
-        texto_sem_aspas = texto.replace("'", "")
+        texto_sem_aspas = texto_codificado.replace("'", "")
         
         # Remover os colchetes
         texto_sem_colchetes = texto_sem_aspas.replace("[", "").replace("]", "")
