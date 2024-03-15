@@ -154,11 +154,7 @@ with coluna_descricao:
         instrucoes = propriedades['instrucoes']
         riscos = propriedades['riscos']
         severidade = propriedades['severidade']
-        
-        # Remover as aspas e os colchetes do texto gerado pela API
-        descrição_limpa = descricao.replace("'", "").replace("[", "").replace("]", "")
-
-        
+               
         texto = f"""
             VIGIDESASTRES - PROGRAMA NACIONAL DE VIGILÂNCIA EM SAÚDE DOS RISCOS ASSOCIADOS AOS DESASTRES
 
@@ -186,9 +182,13 @@ with coluna_descricao:
 Fonte: https://alertas2.inmet.gov.br/
         """
         st.markdown(texto)
-        
+
+              
         # Codificar o texto do link
         texto_codificado = urllib.parse.quote(texto)
+
+        # Remover as aspas e os colchetes do texto gerado pela API
+        descrição_limpa = descricao.replace("'", "").replace("[", "").replace("]", "")
        
         # Gerar o link para o WhatsApp
         link_whatsapp = f"https://wa.me/?text={texto_codificado}"
