@@ -83,6 +83,14 @@ def crs_no_aviso(aviso):
 
   return aviso
 
+# Função para formatar a texto
+def remover_aspas_e_colchetes(descricao):
+    
+    descricao_sem_aspas = descricao.replace("'", "")  # Remove as aspas simples
+    descricao_formatada = texto_sem_aspas.replace("[", "").replace("]", "")  # Remove os colchetes
+    return descricao_formatada
+
+
 # Cria lista vazia para armazenar as features
 lista_features = []
 
@@ -184,9 +192,6 @@ Fonte: https://alertas2.inmet.gov.br/
         # Codificar o texto do link
         texto_codificado = urllib.parse.quote(texto)
 
-        # Remover as aspas e os colchetes do texto gerado pela API
-        descrição_limpa = descricao.replace("'", "").replace("[", "").replace("]", "")
-       
         # Gerar o link para o WhatsApp
         link_whatsapp = f"https://wa.me/?text={texto_codificado}"
         
