@@ -148,7 +148,7 @@ with coluna_mapa:
     st_data = st_folium(mapa, width=500, height=450)
 
 with coluna_descricao:
-    try:
+    #try:
         propriedades = st_data['last_active_drawing']['properties']
         crs = propriedades['crs']
         data_hora_inicio = f" {propriedades['data_inicio_formatado']} - {propriedades['hora_inicio']} "
@@ -228,7 +228,7 @@ Fonte: https://alertas2.inmet.gov.br/
         st.markdown(html_button, unsafe_allow_html=True)
         
         
-    except:
-        st.write('Clique na área de interesse e aguarde para obter informações sobre alertas.')
+    #except:
+        #st.write('Clique na área de interesse e aguarde para obter informações sobre alertas.')
     
     
