@@ -131,7 +131,7 @@ folium.GeoJson(geojson_str,
                 "fillColor": feature["properties"]["aviso_cor"],
                 "color": "black",
                 "weight": 1,
-               'fillOpacity':0.4},
+               'fillOpacity':0.1},
                highlight_function=lambda feature: {
                 "fillColor": feature["properties"]["aviso_cor"],
                 "color": "black",
