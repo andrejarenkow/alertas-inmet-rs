@@ -15,6 +15,7 @@ import urllib.parse
 import urllib.request
 import re
 import contextily as ctx
+import matplotlib.pyplot as plt
 
 # Configurações da página
 st.set_page_config(
