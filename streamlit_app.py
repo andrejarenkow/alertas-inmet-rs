@@ -186,7 +186,7 @@ with coluna_descricao:
         
         # Salve a figura como uma imagem PNG
         imagem_path = 'mapa_geo_dataframe_geojson_com_fundo_limites_wgs84.png'
-        plt.savefig(imagem_path, dpi=300)
+        plt.savefig(imagem_path, dpi=100)
 
         # Codificar a imagem em base64 para anexar ao texto
         with open(imagem_path, "rb") as image_file:
