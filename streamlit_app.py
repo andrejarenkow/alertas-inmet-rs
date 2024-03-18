@@ -234,6 +234,4 @@ Fonte: https://alertas2.inmet.gov.br/
         
         
     except:
-        #st.write('Clique na área de interesse e aguarde para obter informações sobre alertas.')
-    
-    
+        st.write('Clique na área de interesse e aguarde para obter informações sobre alertas.')
