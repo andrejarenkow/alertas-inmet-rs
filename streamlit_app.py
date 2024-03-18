@@ -16,6 +16,7 @@ import urllib.request
 import re
 import contextily as ctx
 import matplotlib.pyplot as plt
+import base64
 
 # Configurações da página
 st.set_page_config(
