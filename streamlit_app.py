@@ -192,9 +192,9 @@ with coluna_descricao:
         #with open(imagem_path, "rb") as image_file:
         #    encoded_string = base64.b64encode(image_file.read()).decode()
 
-        st.image(imagem_path)
+        
         texto = f"""
-     VIGIDESASTRES - PROGRAMA NACIONAL DE VIGILÂNCIA EM SAÚDE DOS RISCOS ASSOCIADOS AOS DESASTRES
+     VIGIDESASTRES RS - PROGRAMA NACIONAL DE VIGILÂNCIA EM SAÚDE DOS RISCOS ASSOCIADOS AOS DESASTRES
      
 Prezados(as), 
              
@@ -218,6 +218,7 @@ Na ocorrência do evento, solicitamos maiores informações sobre os impactos e 
 Fonte: https://alertas2.inmet.gov.br/
         """
         st.markdown(texto)
+        st.image(imagem_path)
 
               
         # Codificar o texto do link
