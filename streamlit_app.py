@@ -180,7 +180,7 @@ with coluna_descricao:
         ctx.add_basemap(ax, source=ctx.providers.OpenStreetMap.Mapnik, crs=gdf.crs.to_string())
         
         # Adicione títulos, legendas, etc., conforme necessário
-        plt.title(f'Alerta de {descricao}, de {data_hora_inicio} até {data_hora_fim}.')
+        #plt.title(f'Alerta de {descricao}, de {data_hora_inicio} até {data_hora_fim}.')
         plt.xlabel('Longitude')
         plt.ylabel('Latitude')
         
