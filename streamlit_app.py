@@ -163,7 +163,7 @@ with coluna_descricao:
      
 Prezados(as), 
              
-INMET publica aviso alertando sobre {riscos}. O cenário possibilita a ocorrência de eventos como, alagamentos, enxurradas, movimento de massa e outros desastres associados.  
+INMET publica aviso alertando sobre {riscos}.   
              
 *Aviso de:* {descricao}
             
