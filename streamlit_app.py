@@ -161,6 +161,7 @@ with coluna_descricao:
 
         #Geração da imagem que vai pelo whatsapp
         gdf = gpd.read_file(propriedades['poligono'])
+        gdf_2 = gpd.read_file(rs_municipios)
                 
         # Crie uma figura e um eixo para o mapa
         fig, ax = plt.subplots(figsize=(10, 10))
@@ -172,7 +173,7 @@ with coluna_descricao:
         # Plote o GeoDataFrame no mapa com o fundo do OpenStreetMap
         gdf.plot(ax=ax, facecolor='none', edgecolor=propriedades['aviso_cor'], linewidth=1.0, hatch='////')
         # Plote o segundo GeoDataFrame filtrado no mesmo mapa
-        rs_municipios.plot(ax=ax, facecolor='none', edgecolor='grey', linewidth=1.0)
+        gdf_2.plot(ax=ax, facecolor='none', edgecolor='grey', linewidth=1.0)
         ctx.add_basemap(ax, source=ctx.providers.OpenStreetMap.Mapnik, crs=gdf.crs.to_string())
         
         # Adicione títulos, legendas, etc., conforme necessário
