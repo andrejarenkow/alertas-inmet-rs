@@ -186,13 +186,13 @@ with coluna_descricao:
         
         # Salve a figura como uma imagem PNG
         imagem_path = 'mapa_geo_dataframe_geojson_com_fundo_limites_wgs84.png'
-        plt.savefig(imagem_path, dpi=100)
+        plt.savefig(imagem_path, dpi=50)
 
         # Codificar a imagem em base64 para anexar ao texto
         with open(imagem_path, "rb") as image_file:
             encoded_string = base64.b64encode(image_file.read()).decode()
 
-        st.image(imagem_path)
+        #st.image(imagem_path)
         texto = f"""
     [Mapa](data:image/png;base64,{encoded_string})
      VIGIDESASTRES - PROGRAMA NACIONAL DE VIGILÂNCIA EM SAÚDE DOS RISCOS ASSOCIADOS AOS DESASTRES
