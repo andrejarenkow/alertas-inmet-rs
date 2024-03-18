@@ -218,7 +218,7 @@ Na ocorrência do evento, solicitamos maiores informações sobre os impactos e 
 Fonte: https://alertas2.inmet.gov.br/
         """
         st.markdown(texto)
-        st.image(imagem_path)
+        
 
               
         # Codificar o texto do link
@@ -232,6 +232,7 @@ Fonte: https://alertas2.inmet.gov.br/
 
         # Exibir o botão no Streamlit
         st.markdown(html_button, unsafe_allow_html=True)
+        st.image(imagem_path)
         
         
     except:
