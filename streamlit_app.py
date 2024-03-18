@@ -172,7 +172,7 @@ with coluna_descricao:
         # Plote o GeoDataFrame no mapa com o fundo do OpenStreetMap
         gdf.plot(ax=ax, facecolor='none', edgecolor=propriedades['aviso_cor'], linewidth=1.0, hatch='////')
         # Plote o segundo GeoDataFrame filtrado no mesmo mapa
-        geojson_crs.plot(ax=ax, facecolor='none', edgecolor='grey', linewidth=1.0)
+        rs_municipios.plot(ax=ax, facecolor='none', edgecolor='grey', linewidth=1.0)
         ctx.add_basemap(ax, source=ctx.providers.OpenStreetMap.Mapnik, crs=gdf.crs.to_string())
         
         # Adicione títulos, legendas, etc., conforme necessário
