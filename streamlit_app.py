@@ -163,7 +163,7 @@ with coluna_descricao:
      
 Prezados(as), 
              
-INMET publica aviso alertando sobre {riscos}.   
+INMET publica aviso alertando sobre {riscos}   
              
 *Aviso de:* {descricao}
             
