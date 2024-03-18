@@ -233,7 +233,7 @@ Fonte: https://alertas2.inmet.gov.br/
         st.markdown(html_button, unsafe_allow_html=True)
         
         
-    #except:
+    except:
         #st.write('Clique na área de interesse e aguarde para obter informações sobre alertas.')
     
     
