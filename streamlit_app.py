@@ -180,12 +180,12 @@ with coluna_descricao:
         ctx.add_basemap(ax, source=ctx.providers.OpenStreetMap.Mapnik, crs=gdf.crs.to_string())
         
         # Adicione títulos, legendas, etc., conforme necessário
-        plt.title('Mapa do GeoDataFrame (GeoJSON) com Fundo do OpenStreetMap')
+        plt.title(f'Alerta de {descricao}, de {data_hora_inicio} até {data_hora_fim}.')
         plt.xlabel('Longitude')
         plt.ylabel('Latitude')
         
         # Salve a figura como uma imagem PNG
-        imagem_path = 'mapa_geo_dataframe_geojson_com_fundo_limites_wgs84.png'
+        imagem_path = 'Alerta '
         plt.savefig(imagem_path, dpi=100)
 
         # Codificar a imagem em base64 para anexar ao texto
