@@ -14,7 +14,7 @@ from datetime import datetime
 import urllib.parse
 import urllib.request
 import re
-
+import contextily as ctx
 
 # Configurações da página
 st.set_page_config(
@@ -157,8 +157,38 @@ with coluna_descricao:
         instrucoes = propriedades['instrucoes']
         riscos = propriedades['riscos']
         severidade = propriedades['severidade']
+
+        #Geração da imagem que vai pelo whatsapp
+        gdf = gpd.read_file(propriedades['poligono'])
+                
+        # Crie uma figura e um eixo para o mapa
+        fig, ax = plt.subplots(figsize=(10, 10))
+        
+        # Ajuste os limites do eixo x e y para os limites desejados
+        ax.set_xlim(-58, -49)
+        ax.set_ylim(-34.5, -26.5)
+        
+        # Plote o GeoDataFrame no mapa com o fundo do OpenStreetMap
+        gdf.plot(ax=ax, facecolor='none', edgecolor=propriedades['aviso_cor'], linewidth=1.0, hatch='////')
+        # Plote o segundo GeoDataFrame filtrado no mesmo mapa
+        geojson_crs.plot(ax=ax, facecolor='none', edgecolor='grey', linewidth=1.0)
+        ctx.add_basemap(ax, source=ctx.providers.OpenStreetMap.Mapnik, crs=gdf.crs.to_string())
+        
+        # Adicione títulos, legendas, etc., conforme necessário
+        plt.title('Mapa do GeoDataFrame (GeoJSON) com Fundo do OpenStreetMap')
+        plt.xlabel('Longitude')
+        plt.ylabel('Latitude')
+        
+        # Salve a figura como uma imagem PNG
+        imagem_path = 'mapa_geo_dataframe_geojson_com_fundo_limites_wgs84.png'
+        plt.savefig(imagem_path, dpi=300)
+
+        # Codificar a imagem em base64 para anexar ao texto
+        with open(imagem_path, "rb") as image_file:
+            encoded_string = base64.b64encode(image_file.read()).decode()
                
         texto = f"""
+    [Mapa](data:image/png;base64,{encoded_string})
      VIGIDESASTRES - PROGRAMA NACIONAL DE VIGILÂNCIA EM SAÚDE DOS RISCOS ASSOCIADOS AOS DESASTRES
      
 Prezados(as), 
