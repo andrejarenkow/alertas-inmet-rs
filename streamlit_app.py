@@ -33,6 +33,9 @@ col3.title('Vigidesastres RS - Alertas INMET')
 # Importação dos dados
 municipios_crs = pd.read_csv('https://raw.githubusercontent.com/andrejarenkow/csv/master/Munic%C3%ADpios%20RS%20IBGE6%20Popula%C3%A7%C3%A3o%20CRS%20Regional%20-%20P%C3%A1gina1.csv')
 
+# Geodataframe CRS
+geojson_crs = gpd.read_file('https://raw.githubusercontent.com/andrejarenkow/geodata/main/RS_por_CRS/RS_por_CRS.json')
+
 # Importação shape CRS
 with urllib.request.urlopen("https://raw.githubusercontent.com/andrejarenkow/geodata/main/RS_por_CRS/RS_por_CRS.json") as url:
   rs_municipios = json.loads(url.read().decode())
@@ -161,7 +164,6 @@ with coluna_descricao:
 
         #Geração da imagem que vai pelo whatsapp
         gdf = gpd.read_file(propriedades['poligono'])
-        gdf_2 = gpd.read_file(rs_municipios)
                 
         # Crie uma figura e um eixo para o mapa
         fig, ax = plt.subplots(figsize=(10, 10))
@@ -173,7 +175,7 @@ with coluna_descricao:
         # Plote o GeoDataFrame no mapa com o fundo do OpenStreetMap
         gdf.plot(ax=ax, facecolor='none', edgecolor=propriedades['aviso_cor'], linewidth=1.0, hatch='////')
         # Plote o segundo GeoDataFrame filtrado no mesmo mapa
-        gdf_2.plot(ax=ax, facecolor='none', edgecolor='grey', linewidth=1.0)
+        geojson_crs.plot(ax=ax, facecolor='none', edgecolor='grey', linewidth=1.0)
         ctx.add_basemap(ax, source=ctx.providers.OpenStreetMap.Mapnik, crs=gdf.crs.to_string())
         
         # Adicione títulos, legendas, etc., conforme necessário
