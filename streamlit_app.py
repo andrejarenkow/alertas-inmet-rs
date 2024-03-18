@@ -192,7 +192,7 @@ with coluna_descricao:
         with open(imagem_path, "rb") as image_file:
             encoded_string = base64.b64encode(image_file.read()).decode()
 
-        st.write(encoded_string)
+        st.image(imagem_path)
         texto = f"""
     [Mapa](data:image/png;base64,{encoded_string})
      VIGIDESASTRES - PROGRAMA NACIONAL DE VIGILÂNCIA EM SAÚDE DOS RISCOS ASSOCIADOS AOS DESASTRES
