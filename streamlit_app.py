@@ -89,8 +89,8 @@ else:
       aviso['crs'] = ', '.join(str(item) for item in lista_crs)
       aviso['riscos'] = '. '.join(str(item) for item in aviso['riscos'])
       aviso['instrucoes'] = '. '.join(str(item) for item in aviso['instrucoes'])
-      aviso['data_inicio_formatado'] = (aviso['data_inicio'])
-      aviso['data_fim_formatado'] = (aviso['data_fim'])
+      aviso['data_inicio_formatado'] = formatar_data(aviso['data_inicio'])
+      aviso['data_fim_formatado'] = formatar_data(aviso['data_fim'])
       
       return aviso
     
