@@ -100,7 +100,7 @@ else:
     
     # Percorre a lista de avisos para criar as features
     for aviso in lista_avisos_rs:
-      crs_no_aviso(aviso)
+      aviso = crs_no_aviso(aviso)
       feature = geojson.Feature(geometry=json.loads(aviso['poligono']), properties=aviso)
       lista_features.append(feature)
     
